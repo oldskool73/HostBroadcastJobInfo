@@ -80,7 +80,7 @@ class JobController extends BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::json(Job::find($id));
+		return Response::json(Job::with('keyNumbers','secondary')->find($id));
 	}
 
 
