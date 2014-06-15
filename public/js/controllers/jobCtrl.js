@@ -10,6 +10,8 @@ angular.module('jobController', [
 		Job
 	) {
 
+		$scope.newKeyNumber = '';
+
 		// object to hold all the data for the new job form
 		$scope.jobData = {};
 
@@ -122,6 +124,29 @@ angular.module('jobController', [
 						});
 
 				});
+		};
+
+		$scope.deleteKeyNumber = function(id) {
+			$.each($scope.job.key_numbers,function(idx,key) {
+				if (key.id === id) {
+					$scope.job.key_numbers.splice(idx,1);
+					return false;
+				}
+			});
+			// $scope.job.key_numbers
+		};
+
+		$scope.addKeyNumber = function(newKeyNumber) {
+			$scope.job.key_numbers.push({
+				id: generateQuickGuid(),
+				number: $scope.newKeyNumber
+			});
+			$scope.newKeyNumber = '';
+		};
+
+		function generateQuickGuid() {
+		    return Math.random().toString(36).substring(2, 15) +
+		        Math.random().toString(36).substring(2, 15);
 		};
 
 	});

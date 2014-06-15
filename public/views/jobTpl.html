@@ -218,7 +218,7 @@
     <div class="input-group">
       <input type="text" class="form-control" datepicker-popup="" ng-model="job.first_air_date" is-open="first_air_date_opened" ng-required="true" close-text="Close" />     
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'first_air_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'first_air_date')"><i class="fa fa-calendar"></i></button>
       </span>
     </div>
   </div>
@@ -230,7 +230,7 @@
     <div class="input-group">
       <input type="text" class="form-control" datepicker-popup="" ng-model="job.off_air_date" is-open="off_air_date_opened" ng-required="true" close-text="Close" />     
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'off_air_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'off_air_date')"><i class="fa fa-calendar"></i></button>
       </span>
     </div>
   </div>
@@ -242,7 +242,7 @@
     <div class="input-group">
       <input type="text" class="form-control" datepicker-popup="" ng-model="job.roll_over_date" is-open="roll_over_date_opened" ng-required="true" close-text="Close" />     
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'roll_over_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'roll_over_date')"><i class="fa fa-calendar"></i></button>
       </span>
     </div>
   </div>
@@ -256,7 +256,7 @@
     <div class="input-group">
       <input type="text" class="form-control" datepicker-popup="" ng-model="job.music_expire_date" is-open="music_expires_date_opened" ng-required="true" close-text="Close" />     
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'music_expires_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'music_expires_date')"><i class="fa fa-calendar"></i></button>
       </span>
     </div>
   </div>
@@ -273,6 +273,27 @@
 
 <legend>Key Numbers</legend>
 
+<div class="form-group" ng-repeat='keynumber in job.key_numbers'>
+  <div class="controls col-sm-9 col-sm-offset-3">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="keynumber.number" >
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-danger" ng-click="deleteKeyNumber(keynumber.id)"><i class="fa fa-times"></i> Delete</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="controls col-sm-9 col-sm-offset-3">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="newKeyNumber" >
+      <span class="input-group-btn">
+        <button type="button" class="btn" ng-class="(newKeyNumber!='')?'btn-success':''" ng-disabled="newKeyNumber==''" ng-click="addKeyNumber()"><i class="fa fa-check"></i> Add</button>
+      </span>
+    </div>
+  </div>
+</div>
 
 <legend>Talent</legend>
 
