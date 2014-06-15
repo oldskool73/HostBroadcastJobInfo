@@ -1,0 +1,76 @@
+<form class="form form-horizontal" role="form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>New Job</legend>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="client">Client</label>
+  <div class="controls col-sm-10">
+    <input type="text" ng-model="job.client" placeholder="Client" typeahead="address for address in getClientList($viewValue)" typeahead-loading="loadingClients" class="form-control">
+    <i ng-show="loadingClients" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="job_number">Job Number</label>
+  <div class="controls col-sm-10">
+    <input style="text-transform: uppercase" id="job_number" name="job_number" type="text" placeholder="Job Number" class="form-control" value="{{job.job_number}}">    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="product">Product</label>
+  <div class="controls col-sm-10">
+    <input id="product" name="product" type="text" placeholder="Product" class="form-control" value="{{job.product}}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="title">Title</label>
+  <div class="controls col-sm-10">
+    <input id="title" name="title" type="text" placeholder="Title" class="form-control" value="{{job.title}}">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="format">Format</label>
+  <div class="controls col-sm-10">
+    <select id="format" name="format" class="form-control">
+      <option>TV</option>
+      <option>Radio</option>
+      <option>Cinema</option>
+      <option>Online</option>
+      <option>Other</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="other">Other</label>
+  <div class="controls col-sm-9">
+    <input id="other" name="other" type="text" placeholder="If Other, add details here" class="form-control">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="length">Length</label>
+  <div class="controls col-sm-10">
+    <input id="length" name="length" type="text" placeholder="Length" class="form-control">
+    
+  </div>
+</div>
+
+
+<hr>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <button type="submit" class="btn btn-default">Sign in</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

@@ -1,0 +1,43 @@
+<!-- LOADING ICON =============================================== -->
+<!-- show loading icon if the loading variable is set to true -->
+<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-5x fa-spin"></span></p>
+
+<div class="row results" ng-hide="loading">
+	<div class="col-md-12">
+		<table class="table-bordered table-hover">
+			<thead>
+				<tr class="titles">
+					<td>Job#</td>
+					<td>Client</td>
+					<td>Title</td>
+					<td>Product</td>
+				</tr>
+				<tr class="search">
+					<td>
+						<input ng-model="search.job_number" placeholder="search">
+						<i class="fa fa-times" ng-show="search.job_number" ng-click="search.job_number=''"></td>
+					<td>
+						<input ng-model="search.client" placeholder="search">
+						<i class="fa fa-times" ng-show="search.client" ng-click="search.client=''"></td>
+					</td>
+					<td>
+						<input ng-model="search.title" placeholder="search">
+						<i class="fa fa-times" ng-show="search.title" ng-click="search.title=''"></td>
+					</td>
+					<td>
+						<input ng-model="search.product" placeholder="search">
+						<i class="fa fa-times" ng-show="search.product" ng-click="search.product=''"></td>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="job in jobs | filter:search" ng-click="viewJob(job.id)">
+					<td>{{job.job_number}}</td>
+					<td>{{job.client}}</td>
+					<td>{{job.title}}</td>
+					<td>{{job.product}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
