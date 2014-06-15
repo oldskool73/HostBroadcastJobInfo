@@ -1,5 +1,14 @@
 <!-- Form Name -->
-<legend>New Job</legend>
+
+
+<div id="toolbar" class="form-group" style="text-align:right">
+    <h1>New Job</h1>
+    <button type="button" ng-disabled="!jobForm.$dirty" class="btn btn-success btn-lg col-sm-offset-1"><i class="fa fa-check"></i> Save</button>
+    <button type="button" ng-disabled="!jobForm.$dirty" class="btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
+    <button type="button" class="btn btn-lg btn-warning"><i class="fa fa-reply"></i> Cancel</button>
+    <button type="button" class="btn btn-lg btn-danger"><i class="fa fa-times"></i> Delete</button>
+  </div>
+</div>
 
 <form novalidate class="form form-horizontal" role="form" name="jobForm">
 <fieldset>
@@ -289,7 +298,7 @@
     <div class="input-group">
       <input type="text" class="form-control" ng-model="newKeyNumber" >
       <span class="input-group-btn">
-        <button type="button" class="btn" ng-class="(newKeyNumber!='')?'btn-success':''" ng-disabled="newKeyNumber==''" ng-click="addKeyNumber()"><i class="fa fa-check"></i> Add</button>
+        <button type="button" class="btn" ng-class="(newKeyNumber!='')?'btn-primary':''" ng-disabled="newKeyNumber==''" ng-click="addKeyNumber()"><i class="fa fa-plus"></i> Add</button>
       </span>
     </div>
   </div>
@@ -297,10 +306,39 @@
 
 <legend>Talent</legend>
 
+<div class="jumbotron" ng-repeat="secondary in job.secondary">
+  <span class="badge">{{$index + 1}}</span>
+  
+  <div ng-include src="'views/secondaryTpl.html'"></div>
+
+  <div class="form-group" style="text-align:right;margin-right:0;">
+    <button type="button" class="btn btn-danger" ng-click="deleteSecondary(secondary.id)"><i class="fa fa-times"></i> Delete</button>
+  </div>
+</div>
+
+<!-- new secondary -->
+<div ng-controller="secondaryCtrl">
+  <div class="form-group" style="text-align: right;margin: 0;" ng-hide="isVisible">
+      <button type="button" class="btn btn-primary col-sm-offset-3" ng-click="isVisible=true"><i class="fa fa-plus"></i> Add Another</button>
+  </div>
+
+  <div class="jumbotron" ng-hide="!isVisible">
+    <div ng-include src="'views/secondaryTpl.html'"></div>
+
+    <div class="form-group" style="text-align:right;margin-right:0;">
+      <button type="button" class="btn btn-primary" ng-click="addSecondary()"><i class="fa fa-check"></i> Add</button>
+      <button type="button" class="btn btn-warning" ng-click="cancelAddSecondary()"><i class="fa fa-reply"></i> Cancel</button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
 <div class="form-group">
-    <button type="button" ng-disabled="!jobForm.$dirty" class="btn btn-success col-sm-offset-3">Save</button>
-    <button type="button" class="btn btn-warning">Cancel</button>
-    <button type="button" class="btn btn-danger col-sm-offset-1">Delete</button>
+    <button type="button" ng-disabled="!jobForm.$dirty" class="btn btn-success btn-lg col-sm-offset-1"><i class="fa fa-check"></i> Save</button>
+    <button type="button" ng-disabled="!jobForm.$dirty" class="btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
+    <button type="button" class="btn btn-lg btn-warning"><i class="fa fa-reply"></i> Cancel</button>
+    <button type="button" class="btn btn-lg btn-danger"><i class="fa fa-times"></i> Delete</button>
   </div>
 </div>
 

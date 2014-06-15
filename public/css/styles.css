@@ -45,3 +45,27 @@ form .loadingIcon {
 form legend {
 	padding: 0.5em 0 0;
 }
+
+form .jumbotron {
+	padding: 20px !important;
+	position: relative;
+}
+
+form .jumbotron .badge {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+#toolbar {	
+	width: 920px;
+	z-index: 3;
+	background: #eee;
+	top: 0;
+	padding: 10px;
+}
+
+#toolbar h1 {
+	float: left;
+	margin-top: 8px;
+}

@@ -1,6 +1,6 @@
 angular.module('jobController', [
-	'jobService'
-])
+		'jobService'
+	])
 	// inject the Job service into our controller
 	.controller('jobCtrl',function(
 		$scope,
@@ -24,6 +24,16 @@ angular.module('jobController', [
 		} else {
 			loadJobList();
 		}
+
+		setTimeout(function() {
+			var offset = $('#toolbar').offset();
+			console.log(offset.top);
+			$('#toolbar').affix({
+				offset: {
+					top: offset.top - 10
+				}
+			});
+		}, 1000);
 
 		$scope.openDatePicker = function($event,id) {
 			console.log('open');
@@ -133,7 +143,6 @@ angular.module('jobController', [
 					return false;
 				}
 			});
-			// $scope.job.key_numbers
 		};
 
 		$scope.addKeyNumber = function(newKeyNumber) {
@@ -144,10 +153,42 @@ angular.module('jobController', [
 			$scope.newKeyNumber = '';
 		};
 
-		function generateQuickGuid() {
-		    return Math.random().toString(36).substring(2, 15) +
-		        Math.random().toString(36).substring(2, 15);
+		$scope.deleteSecondary = function(id) {
+			console.log(id);
+			$.each($scope.job.secondary,function(idx,key) {
+				if (key.id === id) {
+					$scope.job.secondary.splice(idx,1);
+					return false;
+				}
+			});
 		};
 
-	});
+		function generateQuickGuid() {
+			return Math.random().toString(36).substring(2, 15) +
+				Math.random().toString(36).substring(2, 15);
+		}
+
+	})
+
+	//controller for the 'new secondary' section
+	//
+	.controller('secondaryCtrl',function(
+		$scope
+	) {
+
+		$scope.secondary = {};
+		$scope.isVisible = false;
+
+		$scope.addSecondary = function() {
+			$scope.job.secondary.push($scope.secondary);
+			$scope.secondary = {};
+			$scope.isVisible = false;
+		};
+
+		$scope.cancelAddSecondary = function() {
+			$scope.isVisible=false;
+			$scope.secondary={};
+		}
+	})
+;
 	
