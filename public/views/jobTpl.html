@@ -1,7 +1,7 @@
 <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-5x fa-spin"></span></p>
 
 <div id="toolbar" style="text-align:right">
-    <h1>New Job</h1>
+    <h1>{{title}}</h1>
     <button type="button" ng-click="submitJob()" ng-disabled="!jobForm.$dirty" class="btn btn-success btn-lg col-sm-offset-1"><i class="fa fa-check"></i> Save</button>
     <button type="button" ng-click="refreshForm()" ng-disabled="!jobForm.$dirty" class="btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
     <button type="button" ng-click="cancelForm()" class="btn btn-lg btn-warning"><i class="fa fa-reply"></i> Cancel</button>

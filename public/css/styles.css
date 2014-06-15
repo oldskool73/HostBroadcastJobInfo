@@ -1,9 +1,29 @@
 body { 
-	padding-top:30px; 
+	padding-top:1em; 
 }
 
 *:focus {
     outline: 0;
+}
+
+
+.header {
+	position: relative;
+	padding-bottom: 1em;
+}
+
+.header .title {
+	position: absolute;
+	top: 0px;
+	left: 150px;
+	margin: 0;
+	padding: 0;
+}
+
+.header .nav {
+	position: absolute;
+	top: 50px;
+	left: 150px;
 }
 
 .joblist td {
@@ -32,7 +52,7 @@ tr.search td i {
 	top: 15px;
 }
 
-results.tbody tr {
+.joblist tbody tr {
 	cursor: pointer;
 }
 

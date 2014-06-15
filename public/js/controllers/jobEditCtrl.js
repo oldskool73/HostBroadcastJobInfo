@@ -16,6 +16,7 @@ angular.module('jobController')
 		// loading variable to show the spinning loading icon
 		$scope.loading = true;
 
+		$scope.title = 'Edit Job';
 
 		loadJob($routeParams.jobId);
 		setTimeout(function() {
