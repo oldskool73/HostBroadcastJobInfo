@@ -30,6 +30,15 @@ angular.module('jobService', [])
 				});
 			},
 
+			update : function(jobData) {
+				return $http({
+					method: 'PUT',
+					url: '/api/job/' + jobData.id,
+					headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+					data: $.param(jobData)
+				});
+			},
+
 			// destroy a job
 			destroy : function(id) {
 				return $http.delete('/api/job/' + id);
