@@ -23,6 +23,14 @@ angular.module('jobController', [
 			loadJobList();
 		}
 
+		$scope.openDatePicker = function($event,id) {
+			console.log('open');
+			$event.preventDefault();
+			$event.stopPropagation();
+
+			$scope[id + '_opened'] = true;
+		};
+
 		function loadJobList() {
 			// get all the jobs first and bind it to the $scope.jobs object
 			// use the function we created in our service
@@ -39,7 +47,25 @@ angular.module('jobController', [
 				.success(function(data) {
 					$scope.job = data;
 					$scope.loading = false;
+
+					formatScopeDates();
 				});
+		}
+
+		function formatScopeDates() {
+			var def = '0000-00-00';
+			if ($scope.job.music_expire_date === def) {
+				$scope.job.music_expire_date = null;
+			}
+			if ($scope.job.roll_over_date === def) {
+				$scope.job.roll_over_date = null;
+			}
+			if ($scope.job.first_air_date === def) {
+				$scope.job.first_air_date = null;
+			}
+			if ($scope.job.off_air_date === def) {
+				$scope.job.off_air_date = null;
+			}
 		}
 
 		//search all jobs for a value in a column, limit number of items to return

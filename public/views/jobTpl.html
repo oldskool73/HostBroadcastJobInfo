@@ -1,13 +1,15 @@
-<form class="form form-horizontal" role="form">
-<fieldset>
-
 <!-- Form Name -->
 <legend>New Job</legend>
 
+<form class="form form-horizontal" role="form">
+<fieldset>
+
+
+<legend>Details</legend>
 <div class="form-group">
   <label class="control-label col-sm-3" for="client">Client</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.client" placeholder="Client" typeahead="item.client for item in searchColumn('client',$viewValue)" typeahead-loading="loadingClients" class="form-control">
+    <input type="text" ng-model="job.client" typeahead="item.client for item in searchColumn('client',$viewValue)" typeahead-loading="loadingClients" class="form-control">
     <i ng-show="loadingClients" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
@@ -15,14 +17,14 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="job_number">Job Number</label>
   <div class="controls col-sm-9">
-    <input style="text-transform: uppercase" id="job_number" name="job_number" type="text" placeholder="Job Number" class="form-control" ng-model="job.job_number">    
+    <input style="text-transform: uppercase" id="job_number" name="job_number" type="text" class="form-control" ng-model="job.job_number">    
   </div>
 </div>
 
 <div class="form-group">
   <label class="control-label col-sm-3" for="product">Product</label>
   <div class="controls col-sm-9">
-      <input type="text" ng-model="job.product" placeholder="Product" typeahead="item.product for item in searchColumn('product',$viewValue)" typeahead-loading="loadingProduct" class="form-control">
+      <input type="text" ng-model="job.product" typeahead="item.product for item in searchColumn('product',$viewValue)" typeahead-loading="loadingProduct" class="form-control">
       <i ng-show="loadingProduct" class="fa fa-refresh fa-spin loadingIcon"></i>
     </div>
   </div>
@@ -31,7 +33,7 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="title">Title</label>
   <div class="controls col-sm-9">
-    <input id="title" name="title" type="text" placeholder="Title" class="form-control" ng-model="job.title">
+    <input id="title" name="title" type="text" class="form-control" ng-model="job.title">
   </div>
 </div>
 
@@ -58,22 +60,18 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="length">Length</label>
   <div class="controls col-sm-9">
-    <input id="length" name="length" type="text" placeholder="Length" class="form-control"> 
+    <input id="length" name="length" type="text" class="form-control"> 
   </div>
 </div>
 
-<hr>
 
-<!-- $table->text('creative_partner');
-      $table->text('agency_producer');
-      $table->text('agency_director');
-      $table->text('project_manager'); -->
 
+<legend>Agency</legend>
 
 <div class="form-group">
   <label class="control-label col-sm-3" for="creative_partner">Creative Partner</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.creative_partner" placeholder="Creative Partner" typeahead="item.creative_partner for item in searchColumn('creative_partner',$viewValue)" typeahead-loading="loadingCreativePartners" class="form-control">
+    <input type="text" ng-model="job.creative_partner" typeahead="item.creative_partner for item in searchColumn('creative_partner',$viewValue)" typeahead-loading="loadingCreativePartners" class="form-control">
     <i ng-show="loadingCreativePartners" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
@@ -81,7 +79,7 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="agency_producer">Agency Producer</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.agency_producer" placeholder="Agency Producer" typeahead="item.agency_producer for item in searchColumn('agency_producer',$viewValue)" typeahead-loading="loadingAgencyProducers" class="form-control">
+    <input type="text" ng-model="job.agency_producer" typeahead="item.agency_producer for item in searchColumn('agency_producer',$viewValue)" typeahead-loading="loadingAgencyProducers" class="form-control">
     <i ng-show="loadingAgencyProducers" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
@@ -89,11 +87,201 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="agency_director">Broadcast Director</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.agency_director" placeholder="Broadcast Director" typeahead="item.agency_director for item in searchColumn('agency_director',$viewValue)" typeahead-loading="loadingBroadcastDirectors" class="form-control">
+    <input type="text" ng-model="job.agency_director" typeahead="item.agency_director for item in searchColumn('agency_director',$viewValue)" typeahead-loading="loadingBroadcastDirectors" class="form-control">
     <i ng-show="loadingBroadcastDirectors" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
 
+<div class="form-group">
+  <label class="control-label col-sm-3" for="project_manager">Project Manager</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.project_manager" typeahead="item.project_manager for item in searchColumn('project_manager',$viewValue)" typeahead-loading="loadingProjectManagers" class="form-control">
+    <i ng-show="loadingProjectManagers" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+
+
+<legend>Production</legend>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="production_company">Production Company</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.production_company" typeahead="item.production_company for item in searchColumn('production_company',$viewValue)" typeahead-loading="loadingProductionCompanies" class="form-control">
+    <i ng-show="loadingProductionCompanies" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="director">Director</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.director" typeahead="item.director for item in searchColumn('director',$viewValue)" typeahead-loading="loadingDirectors" class="form-control">
+    <i ng-show="loadingDirectors" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="dop">DOP</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.dop" typeahead="item.dop for item in searchColumn('dop',$viewValue)" typeahead-loading="loadingDOP" class="form-control">
+    <i ng-show="loadingDOP" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="producer">Producer</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.producer" typeahead="item.producer for item in searchColumn('producer',$viewValue)" typeahead-loading="loadingProducers" class="form-control">
+    <i ng-show="loadingProducers" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<legend>Post</legend>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="post_production">Post Production</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.post_production" typeahead="item.post_production for item in searchColumn('post_production',$viewValue)" typeahead-loading="loadingPostProductions" class="form-control">
+    <i ng-show="loadingPostProductions" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="editor">Editor</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.editor" typeahead="item.editor for item in searchColumn('director',$viewValue)" typeahead-loading="loadingEditors" class="form-control">
+    <i ng-show="loadingEditors" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="conform">Conform</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.conform" typeahead="item.conform for item in searchColumn('conform',$viewValue)" typeahead-loading="loadingConforms" class="form-control">
+    <i ng-show="loadingConforms" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="post_engineer">Post Engineer</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.post_engineer" typeahead="item.post_engineer for item in searchColumn('post_engineer',$viewValue)" typeahead-loading="loadingPostEngineer" class="form-control">
+    <i ng-show="loadingPostEngineer" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="design">Design</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.design" typeahead="item.design for item in searchColumn('design',$viewValue)" typeahead-loading="loadingDesigns" class="form-control">
+    <i ng-show="loadingDesigns" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="masters_held_at">Masters Held At</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.masters_held_at" typeahead="item.masters_held_at for item in searchColumn('masters_held_at',$viewValue)" typeahead-loading="loadingMasters" class="form-control">
+    <i ng-show="loadingMasters" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<legend>Audio</legend>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="audio_production">Audio Production</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.audio_production" typeahead="item.audio_production for item in searchColumn('audio_production',$viewValue)" typeahead-loading="loadingAudioProduction" class="form-control">
+    <i ng-show="loadingAudioProduction" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="audio_engineer">Audio Engineer</label>
+  <div class="controls col-sm-9">
+    <input type="text" ng-model="job.audio_engineer" typeahead="item.audio_engineer for item in searchColumn('audio_engineer',$viewValue)" typeahead-loading="loadingAudioEngineers" class="form-control">
+    <i ng-show="loadingAudioEngineers" class="fa fa-refresh fa-spin loadingIcon"></i>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="music_details">Music Details</label>
+  <div class="controls col-sm-9">
+    <textarea rows="8" ng-model="job.music_details" class="form-control"></textarea>
+  </div>
+</div>
+
+<legend>Dates</legend>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="first_air_date">First Air Date</label>
+  <div class="controls col-sm-3">
+    <div class="input-group">
+      <input type="text" class="form-control" datepicker-popup="" ng-model="job.first_air_date" is-open="first_air_date_opened" ng-required="true" close-text="Close" />     
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'first_air_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="off_air_date">Off Air Date</label>
+  <div class="controls col-sm-3">
+    <div class="input-group">
+      <input type="text" class="form-control" datepicker-popup="" ng-model="job.off_air_date" is-open="off_air_date_opened" ng-required="true" close-text="Close" />     
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'off_air_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="roll_over_date">Roll Over Date</label>
+  <div class="controls col-sm-3">
+    <div class="input-group">
+      <input type="text" class="form-control" datepicker-popup="" ng-model="job.roll_over_date" is-open="roll_over_date_opened" ng-required="true" close-text="Close" />     
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'roll_over_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3" for="music_expires_date">Music Expire Date</label>
+  <div class="controls col-sm-3">
+    <div class="input-group">
+      <input type="text" class="form-control" datepicker-popup="" ng-model="job.music_expire_date" is-open="music_expires_date_opened" ng-required="true" close-text="Close" />     
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'music_expires_date')"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<legend>Other Notes</legend>
+
+<div class="form-group">
+  <div class="controls col-sm-9 col-sm-offset-3">
+    <textarea rows="12" ng-model="job.other" class="form-control"></textarea>
+  </div>
+</div>
+
+<legend>Key Numbers</legend>
+
+
+<legend>Talent</legend>
+
+<div class="form-group">
+  <div class="controls col-sm-9 col-sm-offset-3">
+    <button type="button" class="btn btn-success">Save</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+    <button type="button" class="btn btn-danger">Delete</button>
+  </div>
+</div>
 
 </fieldset>
 </form>
