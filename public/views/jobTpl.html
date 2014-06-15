@@ -7,7 +7,7 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="client">Client</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.client" placeholder="Client" typeahead="item.client for item in getClientList($viewValue)" typeahead-loading="loadingClients" class="form-control">
+    <input type="text" ng-model="job.client" placeholder="Client" typeahead="item.client for item in searchColumn('client',$viewValue)" typeahead-loading="loadingClients" class="form-control">
     <i ng-show="loadingClients" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
@@ -22,7 +22,9 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="product">Product</label>
   <div class="controls col-sm-9">
-    <input id="product" name="product" type="text" placeholder="Product" class="form-control" ng-model="job.product">
+      <input type="text" ng-model="job.product" placeholder="Product" typeahead="item.product for item in searchColumn('product',$viewValue)" typeahead-loading="loadingProduct" class="form-control">
+      <i ng-show="loadingProduct" class="fa fa-refresh fa-spin loadingIcon"></i>
+    </div>
   </div>
 </div>
 
@@ -71,7 +73,7 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="creative_partner">Creative Partner</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.creative_partner" placeholder="Creative Partner" typeahead="item.creative_partner for item in getCreativePartnerList($viewValue)" typeahead-loading="loadingCreativePartners" class="form-control">
+    <input type="text" ng-model="job.creative_partner" placeholder="Creative Partner" typeahead="item.creative_partner for item in searchColumn('creative_partner',$viewValue)" typeahead-loading="loadingCreativePartners" class="form-control">
     <i ng-show="loadingCreativePartners" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
@@ -79,7 +81,7 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="agency_producer">Agency Producer</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.agency_producer" placeholder="Agency Producer" typeahead="item.agency_producer for item in getAgencyProducerList($viewValue)" typeahead-loading="loadingAgencyProducers" class="form-control">
+    <input type="text" ng-model="job.agency_producer" placeholder="Agency Producer" typeahead="item.agency_producer for item in searchColumn('agency_producer',$viewValue)" typeahead-loading="loadingAgencyProducers" class="form-control">
     <i ng-show="loadingAgencyProducers" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>
@@ -87,7 +89,7 @@
 <div class="form-group">
   <label class="control-label col-sm-3" for="agency_director">Broadcast Director</label>
   <div class="controls col-sm-9">
-    <input type="text" ng-model="job.agency_director" placeholder="Broadcast Director" typeahead="item.agency_director for item in getAgencyDirectorList($viewValue)" typeahead-loading="loadingBroadcastDirectors" class="form-control">
+    <input type="text" ng-model="job.agency_director" placeholder="Broadcast Director" typeahead="item.agency_director for item in searchColumn('agency_director',$viewValue)" typeahead-loading="loadingBroadcastDirectors" class="form-control">
     <i ng-show="loadingBroadcastDirectors" class="fa fa-refresh fa-spin loadingIcon"></i>
   </div>
 </div>

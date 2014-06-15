@@ -7,6 +7,15 @@ angular.module('jobService', [])
 				return $http.get('/api/jobs');
 			},
 
+			search: function(column,term) {
+				return $http.get('/api/jobs', {
+					params: {
+						column: column,
+						search: term
+					}
+				});
+			},
+
 			get : function(id) {
 				return $http.get('/api/job/' + id);
 			},

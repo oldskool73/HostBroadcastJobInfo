@@ -9,7 +9,16 @@ class JobController extends BaseController {
 	 */
 	public function index()
 	{
+		if (Input::has('search') && Input::has('column')) {
+			return JobController::search(Input::get('column'),Input::get('search'));
+		}
+
 		return Response::json(Job::select(['id','job_number','title','client','product'])->orderBy('id','desc')->get());
+	}
+
+	public function search($column,$term)
+	{
+		return Response::json(Job::select([$column])->where($column, 'LIKE', '%'.$term.'%')->groupBy($column)->get());
 	}
 
 	/**

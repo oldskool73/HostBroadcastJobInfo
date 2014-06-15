@@ -1,9 +1,5 @@
 angular.module('jobController', [
-	'jobService',
-	'clientService',
-	'creativePartnerService',
-	'agencyProducerService',
-	'agencyDirectorService'
+	'jobService'
 ])
 	// inject the Job service into our controller
 	.controller('jobCtrl',function(
@@ -11,11 +7,7 @@ angular.module('jobController', [
 		$http,
 		$location,
 		$routeParams,
-		Job,
-		Client,
-		CreativePartner,
-		AgencyProducer,
-		AgencyDirector
+		Job
 	) {
 
 		// object to hold all the data for the new job form
@@ -30,35 +22,6 @@ angular.module('jobController', [
 		} else {
 			loadJobList();
 		}
-
-
-		$scope.getClientList = function(val) {
-			return Client.search(val)
-				.then(function(res){
-					return res.data;
-				});
-		};
-
-		$scope.getCreativePartnerList = function(val) {
-			return CreativePartner.search(val)
-				.then(function(res){
-					return res.data;
-				});
-		};
-
-		$scope.getAgencyProducerList = function(val) {
-			return AgencyProducer.search(val)
-				.then(function(res){
-					return res.data;
-				});
-		};
-
-		$scope.getAgencyDirectorList = function(val) {
-			return AgencyDirector.search(val)
-				.then(function(res){
-					return res.data;
-				});
-		};
 
 		function loadJobList() {
 			// get all the jobs first and bind it to the $scope.jobs object
@@ -78,6 +41,16 @@ angular.module('jobController', [
 					$scope.loading = false;
 				});
 		}
+
+		//search all jobs for a value in a column, limit number of items to return
+		//(if you want all items returned, send 'undefined' for limit)
+		$scope.searchColumn = function(column,val,limit) {
+			limit = limit || 8;
+			return Job.search(column,val)
+				.then(function(res){
+					return res.data.slice(0,limit);
+				});
+		};
 
 		$scope.viewJob = function(id) {
 			$location.path('job/'+id);

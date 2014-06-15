@@ -35,19 +35,6 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::resource('job', 'JobController', 
 		array('only' => array('store', 'show', 'update', 'destroy')));
 
-	Route::resource('clients', 'ClientController', 
-		array('only' => array('index')));
-
-	Route::resource('creativepartners', 'CreativePartnerController', 
-		array('only' => array('index')));
-
-	Route::resource('agencyproducers', 'AgencyProducerController', 
-		array('only' => array('index')));
-
-	Route::resource('agencydirectors', 'AgencyDirectorController', 
-		array('only' => array('index')));
-
-
 });
 
 // =============================================
