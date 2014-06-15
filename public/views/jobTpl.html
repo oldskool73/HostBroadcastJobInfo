@@ -1,9 +1,8 @@
 <!-- Form Name -->
 <legend>New Job</legend>
 
-<form class="form form-horizontal" role="form">
+<form novalidate class="form form-horizontal" role="form" name="jobForm">
 <fieldset>
-
 
 <legend>Details</legend>
 <div class="form-group">
@@ -247,6 +246,8 @@
       </span>
     </div>
   </div>
+  <label class="control-label col-sm-3">Stall Roll Over Alerts <input type="checkbox" ng-model="job.stall_roll_over">
+  </label>
 </div>
 
 <div class="form-group">
@@ -276,10 +277,9 @@
 <legend>Talent</legend>
 
 <div class="form-group">
-  <div class="controls col-sm-9 col-sm-offset-3">
-    <button type="button" class="btn btn-success">Save</button>
+    <button type="button" ng-disabled="!jobForm.$dirty" class="btn btn-success col-sm-offset-3">Save</button>
     <button type="button" class="btn btn-warning">Cancel</button>
-    <button type="button" class="btn btn-danger">Delete</button>
+    <button type="button" class="btn btn-danger col-sm-offset-1">Delete</button>
   </div>
 </div>
 
