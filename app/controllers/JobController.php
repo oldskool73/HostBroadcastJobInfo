@@ -93,7 +93,48 @@ class JobController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$job = Job::find($id);
+
+		$job->client             	= Input::get('client');
+		$job->job_number         	= Input::get('job_number');
+		$job->product            	= Input::get('product');
+		$job->title              	= Input::get('title');
+		$job->format             	= Input::get('format');
+		$job->format_other       	= Input::get('format_other');
+		$job->length             	= Input::get('length');
+
+		$job->creative_partner   	= Input::get('creative_partner');
+		$job->agency_producer    	= Input::get('agency_producer');
+		$job->agency_director    	= Input::get('agency_director');
+		$job->project_manager    	= Input::get('project_manager');
+
+		$job->production_company 	= Input::get('production_company');
+		$job->director           	= Input::get('director');
+		$job->dop                	= Input::get('dop');
+		$job->producer           	= Input::get('producer');
+
+		$job->post_production    	= Input::get('post_production');
+		$job->editor             	= Input::get('editor');
+		$job->conform            	= Input::get('conform');
+		$job->post_engineer      	= Input::get('post_engineer');
+		$job->design             	= Input::get('design');
+		$job->masters_held_at    	= Input::get('masters_held_at');
+
+		$job->audio_production   	= Input::get('audio_production');
+		$job->audio_engineer     	= Input::get('audio_engineer');
+		$job->music_details      	= Input::get('music_details');
+
+		$job->music_expire_date  	= Input::get('music_expire_date');
+		$job->roll_over_date     	= Input::get('roll_over_date');
+		$job->first_air_date     	= Input::get('first_air_date');
+		$job->off_air_date       	= Input::get('off_air_date');
+		$job->other              	= Input::get('other');
+
+		$job->stall_roll_over    	= Input::get('stall_roll_over');
+		
+		$job->save();
+
+		return Response::json(array('success' => true));
 	}
 
 
