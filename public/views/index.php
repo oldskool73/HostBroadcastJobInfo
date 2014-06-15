@@ -23,6 +23,9 @@
 	<script src="js/controllers/navCtrl.js"></script>
 	<script src="js/services/jobService.js"></script>
 	<script src="js/services/clientService.js"></script>
+	<script src="js/services/creativePartnerService.js"></script>
+	<script src="js/services/agencyProducerService.js"></script>
+	<script src="js/services/agencyDirectorService.js"></script>
 	<script src="js/controllers/jobCtrl.js"></script>
 
 </head>

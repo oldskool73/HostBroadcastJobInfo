@@ -38,6 +38,15 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::resource('clients', 'ClientController', 
 		array('only' => array('index')));
 
+	Route::resource('creativepartners', 'CreativePartnerController', 
+		array('only' => array('index')));
+
+	Route::resource('agencyproducers', 'AgencyProducerController', 
+		array('only' => array('index')));
+
+	Route::resource('agencydirectors', 'AgencyDirectorController', 
+		array('only' => array('index')));
+
 
 });
 

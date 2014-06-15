@@ -1,7 +1,23 @@
-angular.module('jobController', ['jobService','clientService'])
-
+angular.module('jobController', [
+	'jobService',
+	'clientService',
+	'creativePartnerService',
+	'agencyProducerService',
+	'agencyDirectorService'
+])
 	// inject the Job service into our controller
-	.controller('jobCtrl',function($scope, $http, $location, $routeParams, Job, Client) {
+	.controller('jobCtrl',function(
+		$scope,
+		$http,
+		$location,
+		$routeParams,
+		Job,
+		Client,
+		CreativePartner,
+		AgencyProducer,
+		AgencyDirector
+	) {
+
 		// object to hold all the data for the new job form
 		$scope.jobData = {};
 
@@ -19,11 +35,28 @@ angular.module('jobController', ['jobService','clientService'])
 		$scope.getClientList = function(val) {
 			return Client.search(val)
 				.then(function(res){
-					var clients = [];
-					angular.forEach(res.data, function(item){
-						clients.push(item.client);
-					});
-					return clients;
+					return res.data;
+				});
+		};
+
+		$scope.getCreativePartnerList = function(val) {
+			return CreativePartner.search(val)
+				.then(function(res){
+					return res.data;
+				});
+		};
+
+		$scope.getAgencyProducerList = function(val) {
+			return AgencyProducer.search(val)
+				.then(function(res){
+					return res.data;
+				});
+		};
+
+		$scope.getAgencyDirectorList = function(val) {
+			return AgencyDirector.search(val)
+				.then(function(res){
+					return res.data;
 				});
 		};
 
