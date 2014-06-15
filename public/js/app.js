@@ -9,14 +9,20 @@ angular
 		$routeProvider
 		.when('/', {
 			templateUrl: 'views/jobListTpl.html',
-			controller: 'jobCtrl'
+			controller: 'jobListCtrl'
 		})
 		.when('/job/:jobId', {
 			templateUrl: 'views/jobTpl.html',
-			controller: 'jobCtrl'
+			controller: 'jobEditCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
 		});
 	})
 	;
+
+angular
+	.module('jobController', [
+		'jobService'
+	]);
+

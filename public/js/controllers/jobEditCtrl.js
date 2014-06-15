@@ -1,30 +1,23 @@
-angular.module('jobController', [
-		'jobService'
-	])
+angular.module('jobController')
 	// inject the Job service into our controller
-	.controller('jobCtrl',function(
+	.controller('jobEditCtrl',function(
 		$scope,
 		$http,
 		$location,
+		$route,
 		$routeParams,
 		Job
 	) {
 
-		$scope.newKeyNumber = '';
+		$scope.job = {};
 
-		// object to hold all the data for the new job form
-		$scope.jobData = {};
+		$scope.newKeyNumber = '';
 
 		// loading variable to show the spinning loading icon
 		$scope.loading = true;
 
 
-		if ($routeParams.jobId) {
-			loadJob($routeParams.jobId);
-		} else {
-			loadJobList();
-		}
-
+		loadJob($routeParams.jobId);
 		setTimeout(function() {
 			var offset = $('#toolbar').offset();
 			console.log(offset.top);
@@ -34,25 +27,6 @@ angular.module('jobController', [
 				}
 			});
 		}, 1000);
-
-		$scope.openDatePicker = function($event,id) {
-			console.log('open');
-			$event.preventDefault();
-			$event.stopPropagation();
-
-			$scope[id + '_opened'] = true;
-		};
-
-		function loadJobList() {
-			// get all the jobs first and bind it to the $scope.jobs object
-			// use the function we created in our service
-			// GET ALL Jobs ====================================================
-			Job.list()
-				.success(function(data) {
-					$scope.jobs = data;
-					$scope.loading = false;
-				});
-		}
 
 		function loadJob(id) {
 			Job.get(id)
@@ -64,35 +38,14 @@ angular.module('jobController', [
 				});
 		}
 
-		function formatScopeDates() {
-			var def = '0000-00-00';
-			if ($scope.job.music_expire_date === def) {
-				$scope.job.music_expire_date = null;
-			}
-			if ($scope.job.roll_over_date === def) {
-				$scope.job.roll_over_date = null;
-			}
-			if ($scope.job.first_air_date === def) {
-				$scope.job.first_air_date = null;
-			}
-			if ($scope.job.off_air_date === def) {
-				$scope.job.off_air_date = null;
-			}
-		}
-
-		//search all jobs for a value in a column, limit number of items to return
-		//(if you want all items returned, send 'undefined' for limit)
-		$scope.searchColumn = function(column,val,limit) {
-			limit = limit || 8;
-			return Job.search(column,val)
-				.then(function(res){
-					return res.data.slice(0,limit);
-				});
+		$scope.cancelForm = function() {
+			$location.path('/');
 		};
 
-		$scope.viewJob = function(id) {
-			$location.path('job/'+id);
+		$scope.refreshForm = function() {
+			$route.reload();
 		};
+		
 
 		// function to handle submitting the form
 		// SAVE A Job ======================================================
@@ -101,16 +54,9 @@ angular.module('jobController', [
 
 			// save the job. pass in job data from the form
 			// use the function we created in our service
-			Job.save($scope.jobData)
+			Job.update($scope.job)
 				.success(function(data) {
-
-					// if successful, we'll need to refresh the job list
-					Job.list()
-						.success(function(getData) {
-							$scope.jobs = getData;
-							$scope.loading = false;
-						});
-
+					loadJob($scope.job.id);
 				})
 				.error(function(data) {
 					console.log(data);
@@ -135,6 +81,43 @@ angular.module('jobController', [
 
 				});
 		};
+
+		//search all jobs for a value in a column, limit number of items to return
+		//(if you want all items returned, send 'undefined' for limit)
+		//used for all the typeahead input values
+		$scope.searchColumn = function(column,val,limit) {
+			limit = limit || 8;
+			return Job.search(column,val)
+				.then(function(res){
+					return res.data.slice(0,limit);
+				});
+		};
+
+		//show a date picker
+		$scope.openDatePicker = function($event,id) {
+			console.log('open');
+			$event.preventDefault();
+			$event.stopPropagation();
+
+			$scope[id + '_opened'] = true;
+		};
+
+		//remove weird values from unset dates
+		function formatScopeDates() {
+			var def = '0000-00-00';
+			if ($scope.job.music_expire_date === def) {
+				$scope.job.music_expire_date = null;
+			}
+			if ($scope.job.roll_over_date === def) {
+				$scope.job.roll_over_date = null;
+			}
+			if ($scope.job.first_air_date === def) {
+				$scope.job.first_air_date = null;
+			}
+			if ($scope.job.off_air_date === def) {
+				$scope.job.off_air_date = null;
+			}
+		}
 
 		$scope.deleteKeyNumber = function(id) {
 			$.each($scope.job.key_numbers,function(idx,key) {
@@ -188,7 +171,7 @@ angular.module('jobController', [
 		$scope.cancelAddSecondary = function() {
 			$scope.isVisible=false;
 			$scope.secondary={};
-		}
+		};
 	})
 ;
 	

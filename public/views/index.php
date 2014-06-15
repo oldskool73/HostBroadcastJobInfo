@@ -25,7 +25,8 @@
 	<script src="js/app.js"></script>
 	<!-- controllers -->
 	<script src="js/controllers/navCtrl.js"></script>
-	<script src="js/controllers/jobCtrl.js"></script>
+	<script src="js/controllers/jobListCtrl.js"></script>
+	<script src="js/controllers/jobEditCtrl.js"></script>
 	<!-- services -->
 	<script src="js/services/jobService.js"></script>
 
